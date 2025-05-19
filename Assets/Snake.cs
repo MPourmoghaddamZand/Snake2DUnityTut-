@@ -15,11 +15,18 @@ public class Snake : MonoBehaviour
 
     Vector2 dir;
 
+    GameObject food;
+    bool isAlive;
+
+    float passedTime, timeBetweenMovements;
+
+    public GameObject gameOverUI;
+    
     public Text points;
     // Start is called before the first frame update
     void Start()
     {
-        timeBetweenMovements = .2f;
+        timeBetweenMovements = .3f;
         dir = Vector2.right;
         createGrid();
         createPlayer(); 
@@ -43,8 +50,6 @@ public class Snake : MonoBehaviour
         }
         return isInHead || isInTail;
     }
-    GameObject food;
-    bool isAlive;
 
     private void spawnFood(){
         Vector2 spawnPos = getRandomPos();
@@ -85,9 +90,6 @@ public class Snake : MonoBehaviour
         }
     }
 
-    float passedTime, timeBetweenMovements;
-
-    public GameObject gameOverUI;
 
     private void gameOver(){
         isAlive = false; 
